@@ -2,224 +2,269 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>สลิปปลอม SCB | ดำแดงเฟี้ยวๆ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Prompt&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
+  <title>เว็บ สลิปปลอม</title>
 
+  <!-- Bootstrap 5 CSS จาก CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- ฟอนต์ Prompt -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
+
+  <style>
     body {
-      margin: 0; padding: 0;
-      background: #121212;
-      color: #fff;
+      background-color: #120000;
+      color: #ff4444;
       font-family: 'Prompt', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2rem;
+      padding: 20px;
       user-select: none;
     }
 
-    .container {
-      background: linear-gradient(145deg, #1a0000, #3b0000);
-      border-radius: 24px;
-      box-shadow: 0 0 30px #ff0033cc;
-      max-width: 450px;
-      width: 100%;
-      padding: 2.5rem 2rem 3rem 2rem;
-      position: relative;
-      border: 2px solid #ff0033;
-      transition: box-shadow 0.3s ease;
-    }
-    .container:hover {
-      box-shadow: 0 0 50px #ff3355ee;
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
+    h1, h2 {
+      color: #ff0033;
+      text-shadow: 0 0 8px #ff2244cc;
       font-weight: 700;
+      letter-spacing: 1.5px;
       text-align: center;
-      margin-bottom: 1.8rem;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      color: #ff0044;
-      text-shadow: 0 0 10px #ff3355aa, 0 0 20px #ff0033bb;
+      margin-bottom: 1.2rem;
     }
 
     label {
+      font-weight: 600;
+      color: #ff5555;
+      text-shadow: 0 0 4px #ff0022cc;
       display: block;
       margin-bottom: 0.3rem;
-      font-weight: 600;
-      color: #ff6677;
-      letter-spacing: 0.8px;
-      font-size: 0.9rem;
-      text-shadow: 0 0 2px #ff0022;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 0.6rem 1rem;
-      margin-bottom: 1.2rem;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
       border-radius: 12px;
-      border: 2px solid #ff0022;
-      background: #220000;
+      border: 2px solid #ff0011;
+      background-color: #330000;
       color: #ffccddee;
-      box-shadow: inset 0 0 10px #ff003399;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-      outline: none;
-      font-weight: 500;
+      box-shadow: inset 0 0 8px #ff0033aa;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 1rem;
     }
     input[type="text"]:focus {
-      border-color: #ff0066;
-      box-shadow: 0 0 12px #ff0066aa;
-      background: #330011;
+      border-color: #ff6699;
+      box-shadow: 0 0 15px #ff6699cc;
+      background-color: #440011;
       color: #fff;
+      outline: none;
+    }
+
+    input[type="file"] {
+      color: #ff5555;
+      margin-bottom: 1.5rem;
+    }
+
+    .icon a img {
+      width: 40px !important;
+      margin-right: 15px;
+      filter: drop-shadow(0 0 2px #ff0033);
+      transition: transform 0.25s ease;
+      cursor: pointer;
+    }
+    .icon a img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px #ff3366);
+    }
+
+    .container-border {
+      background: #2a0000;
+      border-radius: 20px;
+      border: 2px solid #ff0033;
+      padding: 2rem;
+      box-shadow: 0 0 25px #ff003366 inset;
+      max-width: 500px;
+      margin: auto;
     }
 
     button {
       width: 100%;
       background: linear-gradient(135deg, #ff0044, #cc0022);
-      color: white;
       border: none;
-      padding: 0.9rem 0;
-      font-size: 1.15rem;
+      padding: 0.8rem 0;
       font-weight: 700;
+      color: white;
+      font-size: 1.2rem;
       border-radius: 18px;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff0044aa;
+      box-shadow: 0 0 20px #ff0044aa;
       transition: background 0.3s ease, box-shadow 0.3s ease;
       letter-spacing: 1px;
-      text-transform: uppercase;
       user-select: none;
+      margin-top: 1rem;
     }
     button:hover {
       background: linear-gradient(135deg, #ff3366, #ff0011);
-      box-shadow: 0 0 25px #ff3366ee;
+      box-shadow: 0 0 30px #ff3366ee;
     }
     button:active {
       transform: scale(0.97);
-      box-shadow: 0 0 10px #ff2244cc;
+      box-shadow: 0 0 15px #ff2244cc;
     }
 
-    #downloadBtn {
-      margin-top: 1rem;
-      display: none;
-      background: linear-gradient(135deg, #33ff55, #00cc22);
-      box-shadow: 0 0 20px #00ff44cc;
-      color: #0d0;
-    }
-
+    /* ตัวอย่างสลิป */
     #slipPreview {
-      margin-top: 2rem;
-      background: #330000dd;
-      border-radius: 16px;
+      background: #330000cc;
+      color: #ffbbbb;
       padding: 1.8rem 2rem;
-      color: #ffe6e6;
-      font-size: 1rem;
-      line-height: 1.6;
+      border-radius: 16px;
+      margin-top: 2rem;
       font-weight: 600;
-      text-shadow: 0 0 3px #ff0033bb;
       letter-spacing: 0.5px;
+      box-shadow: 0 0 10px #ff3355aa inset;
       user-select: text;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>🔥 สลิปปลอม SCB โทนดำแดง 🔥</h1>
+  <section class="text-center mb-4">
+    <h1>ปลอมสลิปเงิน SCB ไปหลอกพวกโง่ๆควายๆ</h1>
+  </section>
 
-    <label for="timeInput">เวลา</label>
-    <input type="text" id="timeInput" />
+  <div class="container-border">
+    <label for="myText">เวลา</label>
+    <input type="text" id="myText" value="" placeholder="29 ก.ค. 2565 - 19:00" />
 
-    <label for="refInput">รหัสอ้างอิง</label>
-    <input type="text" id="refInput" value="20212234544AGSHnSKwwT2zds" />
+    <label for="myText2">รหัสอ้างอิง</label>
+    <input type="text" id="myText2" value="รหัสอ้างอิง: 20212234544AGSHnSKwwT2zds" />
 
-    <label for="nameInput">ชื่อบัญชีที่โอน</label>
-    <input type="text" id="nameInput" value="นาย สมชาย หีโต" />
+    <label for="myText3">ชื่อบัญชีที่โอน</label>
+    <input type="text" id="myText3" value="นาย สมชาย หีโต" />
 
-    <label for="accInput">เลขบัญชี</label>
-    <input type="text" id="accInput" value="xxx-xxx834-7" />
+    <label for="myText4">เลขบัญชี</label>
+    <input type="text" id="myText4" value="xxx-xxx834-7" />
 
-    <label for="tmInput">บัญชีทรูมันนี่ (ไม่ต้องเปลี่ยน)</label>
-    <input type="text" id="tmInput" value="บัญชีทรู มันนี่" readonly />
+    <label for="myText5">บัญชีทรูมันนี่ ไม่ต้องเปลี่ยน</label>
+    <input type="text" id="myText5" value="บัญชีทรู มันนี่" readonly />
 
-    <label for="tmAccInput">เลขบัญชีทรูมันนี่</label>
-    <input type="text" id="tmAccInput" value="xxx-xxx901-5" />
+    <label for="myText6">เลขบัญชี</label>
+    <input type="text" id="myText6" value="xxx-xxx901-5" />
 
-    <label for="amountInput">จำนวนเงิน</label>
-    <input type="text" id="amountInput" value="100,000.00" />
+    <label for="myText7">จำนวนเงิน</label>
+    <input type="text" id="myText7" value="100,000.00" />
+
+    <h2>เลือกธนาคารที่จะโอน</h2>
+    <div class="icon d-flex mb-3">
+      <a href="kt.html"><img src="ktb.png" alt="ktb"></a>
+      <a href="kbang.html"><img src="kbank.png" alt="kbank"></a>
+      <a href="om.html"><img src="gsb.png" alt="gsb"></a>
+      <a href="index-2.html"><img src="scb.png" alt="scb"></a>
+      <a href="ks.html"><img src="bay.png" alt="bay"></a>
+      <a href="tm.html"><img src="truemoney.png" alt="truemoney"></a>
+    </div>
+
+    <form>
+      <h2>อัพโหลด QR code หรือจะใช้ QR code ที่กูให้ก็ได้ (rickroll)</h2>
+      <input type="file" name="image" class="form-control" accept="image/*" onchange="updatePreview(this, 'image-preview')" />
+      <div id="image-preview" style="margin-top: 1rem;"></div>
+    </form>
 
     <button id="createSlipBtn">สร้างสลิป</button>
-    <button id="downloadBtn">ดาวน์โหลดสลิป (PNG)</button>
+    <button id="downloadSlipBtn" style="display:none;">ดาวน์โหลดสลิป (PNG)</button>
 
     <div id="slipPreview" aria-live="polite" role="region" aria-label="ตัวอย่างสลิป"></div>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script>
-  // ตั้งเวลาอัตโนมัติ พ.ศ. + เวลาไทย
-  function updateTime() {
-    const timeInput = document.getElementById('timeInput');
-    const now = new Date();
-    const yearBE = now.getFullYear() + 543;
-    const monthNames = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
-    const dateStr = `${now.getDate()} ${monthNames[now.getMonth()]} ${yearBE} - ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
-    timeInput.value = dateStr;
-  }
+  <!-- html2canvas CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    // ตั้งเวลาอัตโนมัติ (พ.ศ. ไทย + เวลา)
+    function updateTime() {
+      const timeInput = document.getElementById('myText');
+      const now = new Date();
+      const yearBE = now.getFullYear() + 543;
+      const monthNames = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+      const dateStr = `${now.getDate()} ${monthNames[now.getMonth()]} ${yearBE} - ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      timeInput.value = dateStr;
+    }
 
-  updateTime();
-  setInterval(updateTime, 60000);
+    updateTime();
+    setInterval(updateTime, 60000); // อัพเดตทุกนาที
 
-  const slipPreview = document.getElementById('slipPreview');
-  const downloadBtn = document.getElementById('downloadBtn');
+    // แสดงภาพตัวอย่าง QR code ที่อัพโหลด
+    function updatePreview(input, previewId) {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.maxWidth = '150px';
+          img.style.border = '2px solid #ff0033';
+          img.style.borderRadius = '8px';
+          img.style.boxShadow = '0 0 10px #ff2244cc';
+          preview.appendChild(img);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
 
-  // สร้างสลิปแสดงผลแบบสวย ๆ
-  function createSlip() {
-    const time = document.getElementById('timeInput').value;
-    const ref = document.getElementById('refInput').value;
-    const name = document.getElementById('nameInput').value;
-    const acc = document.getElementById('accInput').value;
-    const tm = document.getElementById('tmInput').value;
-    const tmacc = document.getElementById('tmAccInput').value;
-    const amount = document.getElementById('amountInput').value;
+    // สร้างเนื้อหาสลิปใน div preview
+    function createSlip() {
+      const time = document.getElementById('myText').value;
+      const ref = document.getElementById('myText2').value;
+      const name = document.getElementById('myText3').value;
+      const acc = document.getElementById('myText4').value;
+      const tm = document.getElementById('myText5').value;
+      const tmAcc = document.getElementById('myText6').value;
+      const amount = document.getElementById('myText7').value;
 
-    slipPreview.innerHTML = `
-      <div style="border: 2px solid #ff3355; border-radius: 14px; padding: 1rem; background: linear-gradient(145deg, #220000, #330000); box-shadow: 0 0 15px #ff0044cc;">
-        <h2 style="color:#ff4466; margin-top:0; text-align:center; text-shadow: 0 0 8px #ff0033cc;">สลิปโอนเงิน SCB</h2>
-        <p><strong>เวลา:</strong> <span style="color:#ff8899;">${time}</span></p>
-        <p><strong>รหัสอ้างอิง:</strong> <span style="color:#ff99aa;">${ref}</span></p>
-        <p><strong>ชื่อบัญชีที่โอน:</strong> <span style="color:#ffb3b3;">${name}</span></p>
-        <p><strong>เลขบัญชี:</strong> <span style="color:#ff9999;">${acc}</span></p>
-        <p><strong>บัญชีทรูมันนี่:</strong> <span style="color:#ff99bb;">${tm}</span></p>
-        <p><strong>เลขบัญชีทรูมันนี่:</strong> <span style="color:#ff99bb;">${tmacc}</span></p>
-        <p><strong>จำนวนเงิน:</strong> <span style="color:#ff5555; font-size: 1.3rem; font-weight: 900;">${amount} บาท</span></p>
-      </div>
-    `;
+      const slipPreview = document.getElementById('slipPreview');
+      slipPreview.innerHTML = `
+        <div style="
+          background: linear-gradient(135deg, #330000, #440000);
+          padding: 20px;
+          border-radius: 16px;
+          border: 2px solid #ff0033;
+          box-shadow: 0 0 20px #ff2244cc;
+          color: #ffbbbb;
+          font-weight: 700;
+          line-height: 1.6;
+          user-select: text;
+        ">
+          <h3 style="color:#ff0044; text-align:center; margin-top:0; text-shadow: 0 0 8px #ff3366;">สลิปโอนเงิน SCB</h3>
+          <p><strong>เวลา:</strong> ${time}</p>
+          <p><strong>รหัสอ้างอิง:</strong> ${ref}</p>
+          <p><strong>ชื่อบัญชีที่โอน:</strong> ${name}</p>
+          <p><strong>เลขบัญชี:</strong> ${acc}</p>
+          <p><strong>บัญชีทรูมันนี่:</strong> ${tm}</p>
+          <p><strong>เลขบัญชีทรูมันนี่:</strong> ${tmAcc}</p>
+          <p><strong>จำนวนเงิน:</strong> ${amount} บาท</p>
+        </div>
+      `;
 
-    downloadBtn.style.display = 'block';
-  }
+      document.getElementById('downloadSlipBtn').style.display = 'block';
+      document.getElementById('downloadSlipBtn').disabled = false;
+    }
 
-  document.getElementById('createSlipBtn').addEventListener('click', createSlip);
+    // ดาวน์โหลดสลิปเป็นภาพ PNG
+    function downloadSlip() {
+      const slipPreview = document.getElementById('slipPreview').firstElementChild;
+      if (!slipPreview) return alert('กรุณาสร้างสลิปก่อนดาวน์โหลด');
 
-  downloadBtn.addEventListener('click', () => {
-    html2canvas(slipPreview.firstElementChild, {
-      backgroundColor: null,
-      scale: 2
-    }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = `slip_${Date.now()}.png`;
-      link.href = canvas.toDataURL();
-      link.click();
-    });
-  });
-</script>
+      html2canvas(slipPreview, {
+        scale: 2,
+        backgroundColor: null,
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `slip_${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
 
-
-    </body></html>\
-
+    document.getElementById('createSlipBtn').addEventListener('click', createSlip);
+    document.getElementById('downloadSlipBtn').addEventListener('click', downloadSlip);
+  </script>
+</body>
+</html>
