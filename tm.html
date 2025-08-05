@@ -1,270 +1,300 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>เว็บ สลิปปลอม</title>
+<html lang="en"><head><meta http-equiv="content-type" content="text/html;charset=UTF-8">
 
-  <!-- Bootstrap 5 CSS จาก CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- ฟอนต์ Prompt -->
-  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      background-color: #120000;
-      color: #ff4444;
-      font-family: 'Prompt', sans-serif;
-      padding: 20px;
-      user-select: none;
-    }
-
-    h1, h2 {
-      color: #ff0033;
-      text-shadow: 0 0 8px #ff2244cc;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-
-    label {
-      font-weight: 600;
-      color: #ff5555;
-      text-shadow: 0 0 4px #ff0022cc;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border-radius: 12px;
-      border: 2px solid #ff0011;
-      background-color: #330000;
-      color: #ffccddee;
-      box-shadow: inset 0 0 8px #ff0033aa;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 1rem;
-    }
-    input[type="text"]:focus {
-      border-color: #ff6699;
-      box-shadow: 0 0 15px #ff6699cc;
-      background-color: #440011;
-      color: #fff;
-      outline: none;
-    }
-
-    input[type="file"] {
-      color: #ff5555;
-      margin-bottom: 1.5rem;
-    }
-
-    .icon a img {
-      width: 40px !important;
-      margin-right: 15px;
-      filter: drop-shadow(0 0 2px #ff0033);
-      transition: transform 0.25s ease;
-      cursor: pointer;
-    }
-    .icon a img:hover {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 10px #ff3366);
-    }
-
-    .container-border {
-      background: #2a0000;
-      border-radius: 20px;
-      border: 2px solid #ff0033;
-      padding: 2rem;
-      box-shadow: 0 0 25px #ff003366 inset;
-      max-width: 500px;
-      margin: auto;
-    }
-
-    button {
-      width: 100%;
-      background: linear-gradient(135deg, #ff0044, #cc0022);
-      border: none;
-      padding: 0.8rem 0;
-      font-weight: 700;
-      color: white;
-      font-size: 1.2rem;
-      border-radius: 18px;
-      cursor: pointer;
-      box-shadow: 0 0 20px #ff0044aa;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      letter-spacing: 1px;
-      user-select: none;
-      margin-top: 1rem;
-    }
-    button:hover {
-      background: linear-gradient(135deg, #ff3366, #ff0011);
-      box-shadow: 0 0 30px #ff3366ee;
-    }
-    button:active {
-      transform: scale(0.97);
-      box-shadow: 0 0 15px #ff2244cc;
-    }
-
-    /* ตัวอย่างสลิป */
-    #slipPreview {
-      background: #330000cc;
-      color: #ffbbbb;
-      padding: 1.8rem 2rem;
-      border-radius: 16px;
-      margin-top: 2rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 10px #ff3355aa inset;
-      user-select: text;
-    }
-  </style>
-</head>
-<body>
-
-  <section class="text-center mb-4">
-    <h1>ปลอมสลิปเงิน SCB ไปหลอกพวกโง่ๆควายๆ</h1>
-  </section>
-
-  <div class="container-border">
-    <label for="myText">เวลา</label>
-    <input type="text" id="myText" value="" placeholder="29 ก.ค. 2565 - 19:00" />
-
-    <label for="myText2">รหัสอ้างอิง</label>
-    <input type="text" id="myText2" value="รหัสอ้างอิง: 20212234544AGSHnSKwwT2zds" />
-
-    <label for="myText3">ชื่อบัญชีที่โอน</label>
-    <input type="text" id="myText3" value="นาย สมชาย หีโต" />
-
-    <label for="myText4">เลขบัญชี</label>
-    <input type="text" id="myText4" value="xxx-xxx834-7" />
-
-    <label for="myText5">บัญชีทรูมันนี่ ไม่ต้องเปลี่ยน</label>
-    <input type="text" id="myText5" value="บัญชีทรู มันนี่" readonly />
-
-    <label for="myText6">เลขบัญชี</label>
-    <input type="text" id="myText6" value="xxx-xxx901-5" />
-
-    <label for="myText7">จำนวนเงิน</label>
-    <input type="text" id="myText7" value="100,000.00" />
-
-    <h2>เลือกธนาคารที่จะโอน</h2>
-    <div class="icon d-flex mb-3">
-      <a href="kt.html"><img src="ktb.png" alt="ktb"></a>
-      <a href="kbang.html"><img src="kbank.png" alt="kbank"></a>
-      <a href="om.html"><img src="gsb.png" alt="gsb"></a>
-      <a href="index-2.html"><img src="scb.png" alt="scb"></a>
-      <a href="ks.html"><img src="bay.png" alt="bay"></a>
-      <a href="tm.html"><img src="truemoney.png" alt="truemoney"></a>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="NAS-PRO">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nas-pro.xyz/">
+    <meta property="og:image" content="https://cdn.discordapp.com/avatars/794867763528466432/e540fe4f146f31eceba0d52384a9fccb.png?size=2048">
+    <meta property="og:description" content="บีมคุง">
+    <meta name="theme-color" content="#f74055">
+    <link rel="stylesheet" href="code/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../code.getmdl.io/1.3.0/material.blue-deep_purple.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="fonts/fontello/css/fontello.css" rel="stylesheet">
+    <link href="fonts/other/whitney.ttf" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-offset-right.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" type="image/png" href="https://cdn.discordapp.com/avatars/794867763528466432/e540fe4f146f31eceba0d52384a9fccb.png?size=2048">
+    <title>เว็บ KLOP16480</title>
+    <link rel="stylesheet" href="./cdn.jsdelivr.net/npm/bootstrap%405.1.3/dist/css/bootstrap.min.css">
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;1,100&amp;family=Sarabun:wght@400&amp;display=swap');
+            .container {
+              position: relative;
+              
+              color: rgb(0, 0, 0);
+              
+            }
+            .time{
+              font-family: 'Prompt', sans-serif;
+              font-size: 12px;
+              position: absolute;
+              color: #717173;
+              top: 20%;
+              left: 28%;
+            }
+            .rtf{
+              font-family: 'Sarabun', sans-serif;
+             
+              font-size: 12px;
+              position: absolute;
+              color: #717173;
+              top: 25%;
+              left: 12%;
+            }
+            .name {
+              font-family: 'Prompt', sans-serif;
+              font-size: 16px;
+              position: absolute;
+              top: 34%;
+              float: right;
+              right: 0;
+              margin-right: 20px;
+              color: #201d24ca;
+            }
+            .name-n{
+            font-family: 'Sarabun', sans-serif;
+             
+             font-size: 13px;
+             position: absolute;
+             color: #717173;
+             top: 39.5%;
+             float: right;
+             right:0;
+             margin-right: 20px;
+            }
+            .logo-name{
+              position: absolute;
+              top: 35.3%;
+              left: 45.2%;
+            }
+            
+            .name2{
+                font-family: 'Prompt', sans-serif;
+              font-size: 16px;
+              position: absolute;
+              top: 48%;
+              float: right;
+              right: 0;
+              margin-right: 20px;
+              color: #201d24ca;
+              
+            }
+            .logo-name2{
+              position: absolute;
+              top: 47%;
+              left: 47.8%;
+            }
+            .name-n2{
+            font-family: 'Sarabun', sans-serif;
+             font-size: 13px;
+             position: absolute;
+             color: #717173;
+             top: 54%;
+             float: right;
+             right:0;
+             margin-right: 20px;
+            }
+            .qr{
+                position: absolute;
+                top: 73.5%;
+              right: 0;
+              margin-right: 25px;
+            }
+            .total{
+                font-family: 'Sarabun', sans-serif;
+             
+             font-size: 13px;
+             position: absolute;
+             color: #201d24ca;
+             top: 62.9%;
+             right: 0;
+             float: right;
+             margin-right: 20px;
+            }
+            
+            
+            
+            
+               
+            
+              .hero-image {
+              background-image: url("scb-demo.png");
+              background-color: #cccccc;
+              height: 500px;
+              width: 300px;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              position: relative;
+            }
+            .name .flax-container{
+                display: flex;
+                justify-content: center;
+            
+            }
+            .name2 .flax-container{
+                display: flex;
+                justify-content: center;
+               
+            
+            }
+            
+            .icon a{
+                margin: 0;
+                padding: 0;
+            }
+    
+            .demo{
+                position: absolute;
+                font-size: 50px;
+                bottom: 20%;
+                color: #fb1414ca;
+                opacity: 0.4;
+                filter: alpha(opacity=40); 
+            }
+    </style>
+    <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA"></head>
+    <body>
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5 bg-light">
+    <div class="col-lg-6 col-md-8 mx-auto">
+    <h1 class="fw-light">ปลอมสลิปเงิน SCB ไปหลอกพวกโง่ๆควายๆ</h1>
+    <p class="lead text-muted">
+    </p>
     </div>
-
+    </div>
+    </section>
+    <div class="container">
+    <div class="row">
+    <div class="col">
+    <div class="p-4 border border-primary">
+    <div>
+    เวลา:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;<input type="text" id="myText" value="29 ก.ค. 2565 - 19:00">
+    <br><br>
+    รหัสอ้างอิง:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="myText2" value="รหัสอ้างอิง: 20212234544AGSHnSKwwT2zds">
+    <br><br>
+    ชื่อบัญชีที่โอน:
+    <input type="text" id="myText3" value="นาย สมชาย หีโต">
+    <br><br>
+    เลขบัญชี:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;
+    <input type="text" id="myText4" value=" xxx-xxx834-7">
+    <br><br>
+    บัญชีทรูมันนี่ ไม่ต้องเปลี่ยน:&nbsp;&nbsp;<input type="text" id="myText5" value="บัญชีทรู มันนี่">
+    <br><br>
+    เลขบัญชี:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="myText6" value=" xxx-xxx901-5">
+    <br><br>
+    จำนวนเงิน: <input type="text" id="myText7" value=" 100,000.00">
+    <br><br>
+    <h2>เลือกธนาคารที่จะโอน</h2>
+    <div class="icon">
+    <a href="kt.html"> <img src="ktb.png" width="30"></a>
+    <a href="kbang.html"> <img src="kbank.png" width="30"></a>
+    <a href="om.html"> <img src="gsb.png" width="30"></a>
+    <a href="index-2.html"> <img src="scb.png" width="30"></a>
+    <a href="ks.html"> <img src="bay.png" width="30"></a>
+    <a href="tm.html"> <img src="truemoney.png" width="30"></a>
+    </div>
+    <br>
+    </div>
+    <br>
+    
     <form>
-      <h2>อัพโหลด QR code หรือจะใช้ QR code ที่กูให้ก็ได้ (rickroll)</h2>
-      <input type="file" name="image" class="form-control" accept="image/*" onchange="updatePreview(this, 'image-preview')" />
-      <div id="image-preview" style="margin-top: 1rem;"></div>
+    <h1>อัพโหลดqr code หรือจะใช้ qr code ที่กูให้ก็ได้ (rickroll)</h1>
+    <input type="file" name="image" class="form-control" accept="image/*" onchange="updatePreview(this, 'image-preview')">
+    <div class="text-end">
+    </div>
     </form>
-
-    <button id="createSlipBtn">สร้างสลิป</button>
-    <button id="downloadSlipBtn" style="display:none;">ดาวน์โหลดสลิป (PNG)</button>
-
-    <div id="slipPreview" aria-live="polite" role="region" aria-label="ตัวอย่างสลิป"></div>
-  </div>
-
-  <!-- html2canvas CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script>
-    // ตั้งเวลาอัตโนมัติ (พ.ศ. ไทย + เวลา)
-    function updateTime() {
-      const timeInput = document.getElementById('myText');
-      const now = new Date();
-      const yearBE = now.getFullYear() + 543;
-      const monthNames = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
-      const dateStr = `${now.getDate()} ${monthNames[now.getMonth()]} ${yearBE} - ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
-      timeInput.value = dateStr;
-    }
-
-    updateTime();
-    setInterval(updateTime, 60000); // อัพเดตทุกนาที
-
-    // แสดงภาพตัวอย่าง QR code ที่อัพโหลด
-    function updatePreview(input, previewId) {
-      const preview = document.getElementById(previewId);
-      preview.innerHTML = '';
-      if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          img.style.maxWidth = '150px';
-          img.style.border = '2px solid #ff0033';
-          img.style.borderRadius = '8px';
-          img.style.boxShadow = '0 0 10px #ff2244cc';
-          preview.appendChild(img);
+    <br>
+    <button onclick="myFunction()">สร้างสลิป</button>
+    </div>
+    </div>
+    <div>
+    <div class="p-4 border border-secondary">
+    
+    <div class="hero-image">
+    <div class="time" id="demo">
+    </div>
+    <div class="rtf" id="demo2">
+    </div>
+    <div class="name">
+    <div class="flax-container">
+    <img src="scb1.png" style="width:30px" width="30">&nbsp;
+    <div id="demo3"></div>
+    </div>
+    </div>
+    <div class="name-n" id="demo4"></div>
+    <div class="name2">
+    <div class="flax-container">
+    <img src="true1.png" style="width:30px" width="30">&nbsp;
+    <div id="demo5"></div>
+    </div>
+    </div>
+    <div class="name-n2" id="demo6"></div>
+    <div class="total" id="demo7"></div>
+    <div class="qr"> <img id="image-preview" src="qr.png" style="width:55px" width="55"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5 bg-light">
+    <div class="col-lg-6 col-md-8 mx-auto">
+    <p class="lead text-muted">
+    </p>
+    </div>
+    </div>
+    </section>
+    </div>
+    <script src="./cdn.jsdelivr.net/npm/bootstrap%405.1.3/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+         function myFunction() {
+          var x = document.getElementById("myText").value;
+          document.getElementById("demo").innerHTML = x;
+          var y = document.getElementById("myText2").value;
+          document.getElementById("demo2").innerHTML = y;
+          var z = document.getElementById("myText3").value;
+          document.getElementById("demo3").innerHTML = z;
+          var z2 = document.getElementById("myText4").value;
+          document.getElementById("demo4").innerHTML = z2;
+          var z21 = document.getElementById("myText5").value;
+          document.getElementById("demo5").innerHTML = z21;
+          var z22 = document.getElementById("myText6").value;
+          document.getElementById("demo6").innerHTML = z22;
+          var z223 = document.getElementById("myText7").value;
+          document.getElementById("demo7").innerHTML = z223;
         }
-        reader.readAsDataURL(input.files[0]);
-      }
+        
+        function updatePreview(input, target) {
+        let file = input.files[0];
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            let img = document.getElementById(target);
+            img.src = reader.result;
+        }
     }
 
-    // สร้างเนื้อหาสลิปใน div preview
-    function createSlip() {
-      const time = document.getElementById('myText').value;
-      const ref = document.getElementById('myText2').value;
-      const name = document.getElementById('myText3').value;
-      const acc = document.getElementById('myText4').value;
-      const tm = document.getElementById('myText5').value;
-      const tmAcc = document.getElementById('myText6').value;
-      const amount = document.getElementById('myText7').value;
-
-      const slipPreview = document.getElementById('slipPreview');
-      slipPreview.innerHTML = `
-        <div style="
-          background: linear-gradient(135deg, #330000, #440000);
-          padding: 20px;
-          border-radius: 16px;
-          border: 2px solid #ff0033;
-          box-shadow: 0 0 20px #ff2244cc;
-          color: #ffbbbb;
-          font-weight: 700;
-          line-height: 1.6;
-          user-select: text;
-        ">
-          <h3 style="color:#ff0044; text-align:center; margin-top:0; text-shadow: 0 0 8px #ff3366;">สลิปโอนเงิน SCB</h3>
-          <p><strong>เวลา:</strong> ${time}</p>
-          <p><strong>รหัสอ้างอิง:</strong> ${ref}</p>
-          <p><strong>ชื่อบัญชีที่โอน:</strong> ${name}</p>
-          <p><strong>เลขบัญชี:</strong> ${acc}</p>
-          <p><strong>บัญชีทรูมันนี่:</strong> ${tm}</p>
-          <p><strong>เลขบัญชีทรูมันนี่:</strong> ${tmAcc}</p>
-          <p><strong>จำนวนเงิน:</strong> ${amount} บาท</p>
-        </div>
-      `;
-
-      document.getElementById('downloadSlipBtn').style.display = 'block';
-      document.getElementById('downloadSlipBtn').disabled = false;
+    // ✅ เพิ่มเติม: อัปเดตเวลาอัตโนมัติทุกวินาที
+    function updateAutoTime() {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        const formatted = now.toLocaleDateString('th-TH', options).replace(" ", " - ");
+        document.getElementById("demo").innerHTML = formatted;
     }
+    setInterval(updateAutoTime, 1000);
+    updateAutoTime(); // เรียกทันทีรอบแรก
 
-    // ดาวน์โหลดสลิปเป็นภาพ PNG
-    function downloadSlip() {
-      const slipPreview = document.getElementById('slipPreview').firstElementChild;
-      if (!slipPreview) return alert('กรุณาสร้างสลิปก่อนดาวน์โหลด');
-
-      html2canvas(slipPreview, {
-        scale: 2,
-        backgroundColor: null,
-      }).then(canvas => {
+    // ✅ เพิ่มปุ่มดาวน์โหลดภาพ
+    function downloadImage() {
+        const image = document.getElementById("image-preview");
         const link = document.createElement('a');
-        link.download = `slip_${Date.now()}.png`;
-        link.href = canvas.toDataURL('image/png');
+        link.href = image.src;
+        link.download = 'slip.png';
         link.click();
-      });
     }
-
-    document.getElementById('createSlipBtn').addEventListener('click', createSlip);
-    document.getElementById('downloadSlipBtn').addEventListener('click', downloadSlip);
-  </script>
-</body>
-</html>
+</script>
