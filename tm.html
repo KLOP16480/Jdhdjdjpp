@@ -1,189 +1,150 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Slip Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCB Slip Generator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <style>
     body {
-      background-color: #1c1c1c;
+      background-color: #f8f9fa;
       font-family: 'Sarabun', sans-serif;
-      color: white;
-      margin: 0;
-      padding: 20px;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #fff;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
+    input.form-control {
       font-size: 14px;
     }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background-color: #333;
-      color: #fff;
-      font-size: 16px;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-      justify-content: center;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #b5179e;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #7209b7;
-    }
-
-    .slip-container {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-    }
-
     .hero-image {
-      width: 360px;
-      height: 750px;
-      background-image: url("scb-demo.png");
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      font-size: 16px;
+      margin-top: 20px;
     }
-
-    .hero-image .text {
-      position: absolute;
-      color: black;
-      font-weight: bold;
-    }
-
-    /* ตำแหน่งข้อความ */
-    #demo { top: 268px; left: 80px; }
-    #demo2 { top: 350px; left: 80px; }
-    #demo3 { top: 386px; left: 80px; }
-    #demo4 { top: 460px; left: 80px; }
-    #demo5 { top: 540px; left: 80px; }
-    #demo6 { top: 575px; left: 80px; }
-    #demo7 { top: 610px; left: 80px; }
-
   </style>
 </head>
 <body>
-  <h2>ระบบสร้างสลิปปลอม SCB (UI โดยบีมคุง)</h2>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="p-4 border border-primary rounded shadow-sm bg-white">
+          <h4 class="mb-3">📄 สร้างสลิปปลอม SCB</h4>
 
-  <div class="form-group">
-    <label>เวลา</label>
-    <input type="text" id="myText" placeholder="เวลาปัจจุบันจะใส่อัตโนมัติ">
-  </div>
-  <div class="form-group">
-    <label>ชื่อผู้โอน</label>
-    <input type="text" id="myText2">
-  </div>
-  <div class="form-group">
-    <label>เลขบัญชีผู้โอน</label>
-    <input type="text" id="myText3">
-  </div>
-  <div class="form-group">
-    <label>ชื่อผู้รับ</label>
-    <input type="text" id="myText4">
-  </div>
-  <div class="form-group">
-    <label>เลขบัญชีผู้รับ</label>
-    <input type="text" id="myText5">
-  </div>
-  <div class="form-group">
-    <label>จำนวนเงิน</label>
-    <input type="text" id="myText6">
-  </div>
-  <div class="form-group">
-    <label>ข้อความโน้ต</label>
-    <input type="text" id="myText7">
-  </div>
+          <div class="mb-3">
+            <label for="myText" class="form-label">🕓 เวลา</label>
+            <input type="text" id="myText" class="form-control" value="">
+          </div>
 
-  <div class="btn-group">
-    <button onclick="myFunction()">สร้างสลิป</button>
-    <button onclick="downloadSlip()">ดาวน์โหลดสลิป</button>
-  </div>
+          <div class="mb-3">
+            <label for="myText2" class="form-label">📌 รหัสอ้างอิง</label>
+            <input type="text" id="myText2" class="form-control" value="รหัสอ้างอิง: 20212234544AGSHnSKwwT2zds">
+          </div>
 
-  <div class="slip-container">
-    <div class="hero-image" id="slip">
-      <div id="demo" class="text"></div>
-      <div id="demo2" class="text"></div>
-      <div id="demo3" class="text"></div>
-      <div id="demo4" class="text"></div>
-      <div id="demo5" class="text"></div>
-      <div id="demo6" class="text"></div>
-      <div id="demo7" class="text"></div>
+          <div class="mb-3">
+            <label for="myText3" class="form-label">👤 ชื่อบัญชีที่โอน</label>
+            <input type="text" id="myText3" class="form-control" value="นาย สมชาย หีโต">
+          </div>
+
+          <div class="mb-3">
+            <label for="myText4" class="form-label">🏦 เลขบัญชี</label>
+            <input type="text" id="myText4" class="form-control" value=" xxx-xxx834-7">
+          </div>
+
+          <div class="mb-3">
+            <label for="myText5" class="form-label">💰 บัญชีทรูมันนี่</label>
+            <input type="text" id="myText5" class="form-control" value="บัญชีทรู มันนี่">
+          </div>
+
+          <div class="mb-3">
+            <label for="myText6" class="form-label">📱 เลขบัญชีทรูมันนี่</label>
+            <input type="text" id="myText6" class="form-control" value=" xxx-xxx901-5">
+          </div>
+
+          <div class="mb-3">
+            <label for="myText7" class="form-label">💸 จำนวนเงิน</label>
+            <input type="text" id="myText7" class="form-control" value=" 100,000.00">
+          </div>
+
+          <hr class="my-4">
+
+          <h5>🏦 เลือกธนาคารที่จะโอน</h5>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <a href="kt.html"><img src="ktb.png" width="30"></a>
+            <a href="kbang.html"><img src="kbank.png" width="30"></a>
+            <a href="om.html"><img src="gsb.png" width="30"></a>
+            <a href="index-2.html"><img src="scb.png" width="30"></a>
+            <a href="ks.html"><img src="bay.png" width="30"></a>
+            <a href="tm.html"><img src="truemoney.png" width="30"></a>
+          </div>
+
+          <div class="mb-4">
+            <label for="image" class="form-label">📷 อัพโหลด QR Code</label>
+            <input type="file" name="image" id="image" class="form-control" accept="image/*" onchange="updatePreview(this, 'image-preview')">
+          </div>
+
+          <div class="d-flex gap-2">
+            <button onclick="myFunction()" class="btn btn-success w-100">✅ สร้างสลิป</button>
+            <button onclick="downloadSlip()" class="btn btn-primary w-100">⬇️ ดาวน์โหลด</button>
+          </div>
+        </div>
+
+        <!-- ตัวอย่างภาพหลังจากสร้าง -->
+        <div id="image-preview" class="hero-image text-center mt-4">
+          <!-- ภาพสลิปจะปรากฏที่นี่ -->
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- html2canvas -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
   <script>
     // อัปเดตเวลาอัตโนมัติ
     function updateTime() {
       const now = new Date();
-      const monthsTH = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
-      const day = now.getDate();
-      const month = monthsTH[now.getMonth()];
-      const year = now.getFullYear() + 543;
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const seconds = now.getSeconds().toString().padStart(2, "0");
-      const formatted = `${day} ${month} ${year} - ${hours}:${minutes}:${seconds}`;
-      document.getElementById("myText").value = formatted;
+      const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+      const thaiDate = now.toLocaleDateString('th-TH', options).replace('.', '').replace(' ', ' ');
+      document.getElementById("myText").value = thaiDate;
     }
 
-    setInterval(updateTime, 1000);
     updateTime();
+    setInterval(updateTime, 60000);
 
-    // ฟังก์ชันสร้างสลิป
+    // สร้างสลิป (ตัวอย่างฟังก์ชัน demo)
     function myFunction() {
-      document.getElementById("demo").innerHTML = document.getElementById("myText").value;
-      document.getElementById("demo2").innerHTML = document.getElementById("myText2").value;
-      document.getElementById("demo3").innerHTML = document.getElementById("myText3").value;
-      document.getElementById("demo4").innerHTML = document.getElementById("myText4").value;
-      document.getElementById("demo5").innerHTML = document.getElementById("myText5").value;
-      document.getElementById("demo6").innerHTML = document.getElementById("myText6").value;
-      document.getElementById("demo7").innerHTML = document.getElementById("myText7").value;
+      const preview = document.getElementById("image-preview");
+      preview.innerHTML = `
+        <div class="bg-white p-4 rounded border shadow-sm d-inline-block">
+          <h5>💳 ตัวอย่างสลิป (ข้อมูล)</h5>
+          <p>ชื่อ: ${document.getElementById("myText3").value}</p>
+          <p>บัญชี: ${document.getElementById("myText4").value}</p>
+          <p>จำนวน: ${document.getElementById("myText7").value}</p>
+          <p>เวลา: ${document.getElementById("myText").value}</p>
+          <small>นี่คือตัวอย่างการแสดงผล คุณสามารถใส่ภาพพื้นหลังจริงได้เอง</small>
+        </div>`;
     }
 
-    // ฟังก์ชันดาวน์โหลดภาพชัด
+    // ดาวน์โหลดเป็นภาพชัด
     function downloadSlip() {
-      const slipDiv = document.querySelector('.hero-image');
-      html2canvas(slipDiv, { scale: 3 }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'slip.png';
-        link.href = canvas.toDataURL('image/png');
+      const slipDiv = document.getElementById("image-preview");
+      html2canvas(slipDiv, {
+        scale: 3, // เพิ่มความชัด
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "slip.png";
+        link.href = canvas.toDataURL("image/png");
         link.click();
       });
+    }
+
+    // พรีวิว QR Code
+    function updatePreview(input, id) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.maxWidth = "100%";
+        img.classList.add("mt-3");
+        document.getElementById(id).appendChild(img);
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   </script>
 </body>
