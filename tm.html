@@ -1,320 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>เว็บ สลิปปลอม - ปรับโทนแดงดำ</title>
+  <meta charset="UTF-8">
+  <title>Slip Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #1c1c1c;
+      font-family: 'Sarabun', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Prompt&family=Sarabun&display=swap');
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+    }
 
-  body {
-    background-color: #1a1a1a;
-    color: #f74055;
-    font-family: 'Prompt', sans-serif;
-    margin: 0; padding: 0;
-  }
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-  h1, h2 {
-    color: #f74055;
-    font-weight: 700;
-  }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
 
-  .container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #222;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #f74055cc;
-  }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+    }
 
-  label {
-    display: block;
-    margin: 0.5rem 0 0.2rem;
-    font-weight: 600;
-  }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
 
-  input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #f74055;
-    border-radius: 4px;
-    background-color: #333;
-    color: #f74055;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
+    button {
+      padding: 10px 20px;
+      background-color: #b5179e;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-  input[type="file"] {
-    padding: 5px;
-  }
+    button:hover {
+      background-color: #7209b7;
+    }
 
-  .buttons {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-  }
+    .slip-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
 
-  button {
-    flex: 1;
-    background-color: #f74055;
-    border: none;
-    padding: 12px 0;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    .hero-image {
+      width: 360px;
+      height: 750px;
+      background-image: url("scb-demo.png");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      font-size: 16px;
+    }
 
-  button:hover {
-    background-color: #c72b3e;
-  }
+    .hero-image .text {
+      position: absolute;
+      color: black;
+      font-weight: bold;
+    }
 
-  .hero-image {
-    position: relative;
-    background-image: url('scb-demo.png');
-    background-size: cover;
-    background-position: center;
-    width: 450px;
-    height: 750px;
-    margin: 2rem auto 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 0 25px #f74055bb;
-    color: #201d24;
-    font-family: 'Sarabun', sans-serif;
-  }
+    /* ตำแหน่งข้อความ */
+    #demo { top: 268px; left: 80px; }
+    #demo2 { top: 350px; left: 80px; }
+    #demo3 { top: 386px; left: 80px; }
+    #demo4 { top: 460px; left: 80px; }
+    #demo5 { top: 540px; left: 80px; }
+    #demo6 { top: 575px; left: 80px; }
+    #demo7 { top: 610px; left: 80px; }
 
-  /* Text positions */
-  .time {
-    position: absolute;
-    top: 15%;
-    left: 20%;
-    font-size: 14px;
-    color: #555;
-  }
-
-  .rtf {
-    position: absolute;
-    top: 20%;
-    left: 12%;
-    font-size: 14px;
-    color: #555;
-  }
-
-  .name {
-    position: absolute;
-    top: 30%;
-    right: 20px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #201d24;
-    display: flex;
-    align-items: center;
-  }
-
-  .name img {
-    width: 40px;
-    margin-right: 8px;
-  }
-
-  .name-n {
-    position: absolute;
-    top: 36%;
-    right: 20px;
-    font-size: 15px;
-    color: #555;
-  }
-
-  .name2 {
-    position: absolute;
-    top: 45%;
-    right: 20px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #201d24;
-    display: flex;
-    align-items: center;
-  }
-
-  .name2 img {
-    width: 40px;
-    margin-right: 8px;
-  }
-
-  .name-n2 {
-    position: absolute;
-    top: 51%;
-    right: 20px;
-    font-size: 15px;
-    color: #555;
-  }
-
-  .total {
-    position: absolute;
-    top: 60%;
-    right: 20px;
-    font-size: 17px;
-    font-weight: 600;
-    color: #201d24;
-  }
-
-  .qr {
-    position: absolute;
-    bottom: 15%;
-    right: 25px;
-  }
-
-  .qr img {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    box-shadow: 0 0 8px #f74055cc;
-  }
-
-  /* Icon bank links */
-  .icon {
-    margin-top: 1rem;
-    text-align: center;
-  }
-
-  .icon a img {
-    width: 40px;
-    margin: 0 10px;
-    filter: drop-shadow(0 0 2px #f74055);
-    transition: transform 0.3s ease;
-  }
-
-  .icon a img:hover {
-    transform: scale(1.2);
-  }
-</style>
-
+  </style>
 </head>
 <body>
+  <h2>ระบบสร้างสลิปปลอม SCB (UI โดยบีมคุง)</h2>
 
-<div class="container">
-  <h1>ปลอมสลิปเงิน SCB ไปหลอกพวกโง่ๆควายๆ</h1>
-
-  <label for="myText">เวลา</label>
-  <input type="text" id="myText" value="29 ก.ค. 2565 - 19:00" />
-
-  <label for="myText2">รหัสอ้างอิง</label>
-  <input type="text" id="myText2" value="รหัสอ้างอิง: 20212234544AGSHnSKwwT2zds" />
-
-  <label for="myText3">ชื่อบัญชีที่โอน</label>
-  <input type="text" id="myText3" value="นาย สมชาย หีโต" />
-
-  <label for="myText4">เลขบัญชี</label>
-  <input type="text" id="myText4" value=" xxx-xxx834-7" />
-
-  <label for="myText5">บัญชีทรูมันนี่ ไม่ต้องเปลี่ยน</label>
-  <input type="text" id="myText5" value="บัญชีทรู มันนี่" />
-
-  <label for="myText6">เลขบัญชี</label>
-  <input type="text" id="myText6" value=" xxx-xxx901-5" />
-
-  <label for="myText7">จำนวนเงิน</label>
-  <input type="text" id="myText7" value=" 100,000.00" />
-
-  <h2>เลือกธนาคารที่จะโอน</h2>
-  <div class="icon">
-    <a href="kt.html"><img src="ktb.png" alt="KTB" /></a>
-    <a href="kbang.html"><img src="kbank.png" alt="KBank" /></a>
-    <a href="om.html"><img src="gsb.png" alt="GSB" /></a>
-    <a href="index-2.html"><img src="scb.png" alt="SCB" /></a>
-    <a href="ks.html"><img src="bay.png" alt="Bay" /></a>
-    <a href="tm.html"><img src="truemoney.png" alt="TrueMoney" /></a>
+  <div class="form-group">
+    <label>เวลา</label>
+    <input type="text" id="myText" placeholder="เวลาปัจจุบันจะใส่อัตโนมัติ">
+  </div>
+  <div class="form-group">
+    <label>ชื่อผู้โอน</label>
+    <input type="text" id="myText2">
+  </div>
+  <div class="form-group">
+    <label>เลขบัญชีผู้โอน</label>
+    <input type="text" id="myText3">
+  </div>
+  <div class="form-group">
+    <label>ชื่อผู้รับ</label>
+    <input type="text" id="myText4">
+  </div>
+  <div class="form-group">
+    <label>เลขบัญชีผู้รับ</label>
+    <input type="text" id="myText5">
+  </div>
+  <div class="form-group">
+    <label>จำนวนเงิน</label>
+    <input type="text" id="myText6">
+  </div>
+  <div class="form-group">
+    <label>ข้อความโน้ต</label>
+    <input type="text" id="myText7">
   </div>
 
-  <form>
-    <label for="qrUpload">อัพโหลด QR Code หรือจะใช้ QR Code ที่ให้ก็ได้ (rickroll)</label>
-    <input type="file" id="qrUpload" accept="image/*" onchange="updatePreview(this, 'image-preview')" />
-  </form>
-
-  <div class="buttons">
+  <div class="btn-group">
     <button onclick="myFunction()">สร้างสลิป</button>
     <button onclick="downloadSlip()">ดาวน์โหลดสลิป</button>
   </div>
 
-  <div class="hero-image" id="hero-slip">
-    <div class="time" id="demo">กำลังโหลดเวลา...</div>
-    <div class="rtf" id="demo2"></div>
-
-    <div class="name">
-      <img src="scb1.png" alt="SCB Logo" />
-      <div id="demo3"></div>
-    </div>
-    <div class="name-n" id="demo4"></div>
-
-    <div class="name2">
-      <img src="true1.png" alt="True Logo" />
-      <div id="demo5"></div>
-    </div>
-    <div class="name-n2" id="demo6"></div>
-
-    <div class="total" id="demo7"></div>
-
-    <div class="qr">
-      <img id="image-preview" src="qr.png" alt="QR Code" />
+  <div class="slip-container">
+    <div class="hero-image" id="slip">
+      <div id="demo" class="text"></div>
+      <div id="demo2" class="text"></div>
+      <div id="demo3" class="text"></div>
+      <div id="demo4" class="text"></div>
+      <div id="demo5" class="text"></div>
+      <div id="demo6" class="text"></div>
+      <div id="demo7" class="text"></div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <!-- html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
-<script>
-  // อัปเดตข้อมูลสลิปจาก input
-  function myFunction() {
-    document.getElementById("demo2").textContent = document.getElementById("myText2").value;
-    document.getElementById("demo3").textContent = document.getElementById("myText3").value;
-    document.getElementById("demo4").textContent = document.getElementById("myText4").value;
-    document.getElementById("demo5").textContent = document.getElementById("myText5").value;
-    document.getElementById("demo6").textContent = document.getElementById("myText6").value;
-    document.getElementById("demo7").textContent = document.getElementById("myText7").value;
-  }
+  <script>
+    // อัปเดตเวลาอัตโนมัติ
+    function updateTime() {
+      const now = new Date();
+      const monthsTH = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+      const day = now.getDate();
+      const month = monthsTH[now.getMonth()];
+      const year = now.getFullYear() + 543;
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+      const formatted = `${day} ${month} ${year} - ${hours}:${minutes}:${seconds}`;
+      document.getElementById("myText").value = formatted;
+    }
 
-  // อัปเดต QR code preview
-  function updatePreview(input, target) {
-    const file = input.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function () {
-      document.getElementById(target).src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  }
+    setInterval(updateTime, 1000);
+    updateTime();
 
-  // ดาวน์โหลดสลิปเป็นภาพ PNG ความละเอียดสูง
-  function downloadSlip() {
-    const slipDiv = document.getElementById('hero-slip');
-    html2canvas(slipDiv, { scale: 3 }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = 'slip.png';
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    });
-  }
+    // ฟังก์ชันสร้างสลิป
+    function myFunction() {
+      document.getElementById("demo").innerHTML = document.getElementById("myText").value;
+      document.getElementById("demo2").innerHTML = document.getElementById("myText2").value;
+      document.getElementById("demo3").innerHTML = document.getElementById("myText3").value;
+      document.getElementById("demo4").innerHTML = document.getElementById("myText4").value;
+      document.getElementById("demo5").innerHTML = document.getElementById("myText5").value;
+      document.getElementById("demo6").innerHTML = document.getElementById("myText6").value;
+      document.getElementById("demo7").innerHTML = document.getElementById("myText7").value;
+    }
 
-  // ออโต้ อัปเดตเวลาแบบเรียลไทม์ทุกวินาที
-  function updateTime() {
-    const now = new Date();
-    const monthsTH = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
-    const day = now.getDate();
-    const month = monthsTH[now.getMonth()];
-    const year = now.getFullYear() + 543;
-    const hours = now.getHours().toString().padStart(2,"0");
-    const minutes = now.getMinutes().toString().padStart(2,"0");
-    const seconds = now.getSeconds().toString().padStart(2,"0");
-    const formatted = `${day} ${month} ${year} - ${hours}:${minutes}:${seconds}`;
-    document.getElementById("demo").textContent = formatted;
-  }
-
-  setInterval(updateTime, 1000);
-  updateTime();
-</script>
-
+    // ฟังก์ชันดาวน์โหลดภาพชัด
+    function downloadSlip() {
+      const slipDiv = document.querySelector('.hero-image');
+      html2canvas(slipDiv, { scale: 3 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'slip.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
 </body>
 </html>
