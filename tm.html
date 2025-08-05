@@ -298,3 +298,13 @@
         link.click();
     }
 </script>
+ ✅ เพิ่มปุ่มดาวน์โหลดภาพ
+    function downloadImage() {
+        const image = document.getElementById("image-preview");
+        const link = document.createElement('a');
+        link.href = image.src;
+        link.download = 'slip.png';
+        link.click();
+    }
+</script>
+
